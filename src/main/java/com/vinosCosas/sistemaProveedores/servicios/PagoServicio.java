@@ -28,7 +28,7 @@ public class PagoServicio {
      private ProveedorRepo proveRepo;
     
     @Transactional
-    public void CrearPago(Long proveedorId, Double monto){
+    public void crearPago(Long proveedorId, Double monto){
         Date fechaPago = new Date();
          Optional<Proveedor> respuesta = proveRepo.findById(proveedorId);
          Proveedor proveedor = respuesta.get();
@@ -40,7 +40,24 @@ public class PagoServicio {
         pago.setMontoPago(monto);
         pago.setFechaPago(fechaPago);
         
-        proveRepo.save(proveedor);
+     //   proveRepo.save(proveedor);
         pagoRepo.save(pago);
+    }
+    
+    @Transactional
+    public void modificarPago(Long pagoId, Double monto, Long proveedorId, Date fecha){
+        
+        Optional<Pago> respuestaPago = pagoRepo.findById(pagoId);
+        Pago pago = respuestaPago.get();
+        
+         Optional<Proveedor> respuestaProve = proveRepo.findById(proveedorId);
+         Proveedor proveedor = respuestaProve.get();
+        
+        pago.setProveedor(proveedor);
+        pago.setMontoPago(monto);
+        pago.setFechaPago(fecha);
+        
+         pagoRepo.save(pago);
+        
     }
 }

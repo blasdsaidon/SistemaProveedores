@@ -25,7 +25,7 @@ public class ProveedorServicio {
     private ProveedorRepo proveRepo;
     
     @Transactional
-    public void CrearProveedor(String nombre){
+    public void crearProveedor(String nombre){
         
         Proveedor proveedor = new Proveedor();
         
