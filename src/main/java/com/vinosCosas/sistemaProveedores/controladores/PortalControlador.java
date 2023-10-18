@@ -41,14 +41,14 @@ public class PortalControlador {
     @PostMapping("/registraProve")
     public String registraProve(String nombre){
         System.out.println(nombre);
-        proveServicio.CrearProveedor(nombre);
+        proveServicio.crearProveedor(nombre);
         
         return "redirect:/";
     }
     
     @PostMapping("/registraPago")
     public String registraPago(Long proveId, Double monto){
-        pagoServicio.CrearPago(proveId, monto);
+        pagoServicio.crearPago(proveId, monto);
         
         return "redirect:/";
     }
