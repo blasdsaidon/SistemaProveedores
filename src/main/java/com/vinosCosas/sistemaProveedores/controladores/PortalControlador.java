@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -62,4 +63,14 @@ public class PortalControlador {
         
         return "redirect:/";
     }
-}
+    
+    @GetMapping("/proveedor/{id}")
+    public String detalleProveedor(@PathVariable Long id, ModelMap model) {
+        Proveedor proveedor = proveServicio.getOne(id);
+        
+            model.addAttribute("proveedor", proveedor);
+            return "vistaProve.html";
+        }
+}  
+    
+

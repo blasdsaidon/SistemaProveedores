@@ -40,4 +40,9 @@ public class ProveedorServicio {
         
         return proveeLista;
     }
+    public Proveedor getOne(Long id){
+        Proveedor proveedor = proveRepo.getOne(id);
+        
+        return proveedor;
+    }
 }

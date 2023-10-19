@@ -24,6 +24,7 @@
                 <tr>
                     <th>Nombre del Proveedor</th>
                     <th>Saldo</th>
+                    <th>Detalle</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +33,16 @@
                     <!-- Coloca los datos del proveedor en las columnas -->
                     <td th:text="${Proveedor.nombre}">Nombre del Proveedor</td>
                     <td th:text="${Proveedor.saldo}">Saldo</td>
+                    <td>
+                        <div>
+                            <a
+                                type="submit"
+                                class="btn btn-success"
+                                th:value="@{Poveedor.id}"
+                                th:href ="@{/proveedor/__${Proveedor.id}__}"
+                                >Abrir</a>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
         </table>
