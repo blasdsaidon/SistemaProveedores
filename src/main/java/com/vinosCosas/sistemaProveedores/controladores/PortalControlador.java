@@ -5,10 +5,14 @@
  */
 package com.vinosCosas.sistemaProveedores.controladores;
 
+import com.vinosCosas.sistemaProveedores.entidades.Pago;
 import com.vinosCosas.sistemaProveedores.entidades.Proveedor;
 import com.vinosCosas.sistemaProveedores.servicios.PagoServicio;
 import com.vinosCosas.sistemaProveedores.servicios.PedidoServicio;
 import com.vinosCosas.sistemaProveedores.servicios.ProveedorServicio;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -48,7 +52,7 @@ public class PortalControlador {
     }
     
     @PostMapping("/registraPago")
-    public String registraPago(Long proveId, Double monto){
+    public String registraPago(Long proveId, Double monto) throws ParseException{
         pagoServicio.crearPago(proveId, monto);
         
         return "redirect:/";
@@ -71,6 +75,26 @@ public class PortalControlador {
             model.addAttribute("proveedor", proveedor);
             return "vistaProve.html";
         }
+    
+    @GetMapping("/modificarPago/{id}")
+    public String modificarPago(@PathVariable Long id, ModelMap model){
+        Pago pago = pagoServicio.getOne(id);
+        List<Proveedor> listaProve = proveServicio.mostraProve();
+        
+        model.addAttribute("listaProve", listaProve);
+        model.addAttribute("pago", pago);
+        
+        return "modificarPago.html";
+    }
+    
+    @PostMapping("/actualizarPago/{id}")
+    public String actualizaPago(Long pagoId, Long proveId, Double monto, String fechaPagoS) throws ParseException{
+        System.out.println("----------------------"+fechaPagoS);
+        
+       pagoServicio.modificarPago(pagoId, monto, proveId, fechaPagoS);
+       
+       return"redirect:/";
+    }
 }  
     
 

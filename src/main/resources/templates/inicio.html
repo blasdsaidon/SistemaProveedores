@@ -18,9 +18,10 @@
     </head>
 
     <body  class="bg-imagen">
-
-        <table>
-            <thead>
+        <div class="table-responsive custom-table-responsive">
+            <table class="table custom-table" border="5px" style="width: 100%; font-size: 20px; text-align: center">
+        
+            <thead class="thead-dark">
                 <tr>
                     <th>Nombre del Proveedor</th>
                     <th>Saldo</th>
@@ -38,14 +39,15 @@
                             <a
                                 type="submit"
                                 class="btn btn-success"
-                                th:value="@{Poveedor.id}"
+                                th:value="@{Proveedor.id}"
                                 th:href ="@{/proveedor/__${Proveedor.id}__}"
-                                >Abrir</a>
+                                >Ver</a>
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
+        </div>
        
         <div>ingresar nuevo Proveedor</div>
          <div>

@@ -24,8 +24,8 @@ public class Pago {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaPago;
+    
+    private String fechaPago;
     private double montoPago;
     @ManyToOne
     private Proveedor proveedor; 
@@ -33,7 +33,7 @@ public class Pago {
     public Pago() {
     }
 
-    public Pago(Long id, Date fechaPago, double montoPago, Proveedor proveedor) {
+    public Pago(Long id, String fechaPago, double montoPago, Proveedor proveedor) {
         this.id = id;
         this.fechaPago = fechaPago;
         this.montoPago = montoPago;
@@ -44,7 +44,7 @@ public class Pago {
         return id;
     }
 
-    public Date getFechaPago() {
+    public String getFechaPago() {
         return fechaPago;
     }
 
@@ -60,7 +60,7 @@ public class Pago {
         this.id = id;
     }
 
-    public void setFechaPago(Date fechaPago) {
+    public void setFechaPago(String fechaPago) {
         this.fechaPago = fechaPago;
     }
 
