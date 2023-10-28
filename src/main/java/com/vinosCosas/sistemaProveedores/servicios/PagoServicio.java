@@ -13,8 +13,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Optional;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -60,34 +59,7 @@ public class PagoServicio {
         
         return pago;
     }
-    public Date stringADate(String fecha){
-        SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-        Date fechaFormateadaDate = null;
-         try {
-             fechaFormateadaDate = formato.parse(fecha);
-         } catch (ParseException ex) {
-             Logger.getLogger(PagoServicio.class.getName()).log(Level.SEVERE, null, ex);
-         }
-        
-        return fechaFormateadaDate;
-    }
-    public Date formateaFecha(Date fecha) {
-      SimpleDateFormat formato = new SimpleDateFormat("yyyy-MM-dd");
-
     
-        // Formatea la fecha actual como una cadena en el formato deseado
-        String fechaFormateada = formato.format(fecha);
-
-        // Crea un nuevo objeto Date a partir de la cadena formateada
-        Date fechaFormateadaDate = null;
-         try {
-             fechaFormateadaDate = formato.parse(fechaFormateada);
-         } catch (ParseException ex) {
-             Logger.getLogger(PagoServicio.class.getName()).log(Level.SEVERE, null, ex);
-         }
-        
-        return fechaFormateadaDate;
-    }
     
     @Transactional
     public void modificarPago(Long pagoId, Double monto, Long proveedorId, String fechaS) throws ParseException{

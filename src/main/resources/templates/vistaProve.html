@@ -19,8 +19,16 @@
     <ul class="list-group">
         <li class="list-group-item" th:each="pedido : ${proveedor.pedidos}">
             <!-- <p><strong>ID:</strong> <span th:text="${pedido.id}"></span></p> -->
-            <p><strong>Fecha de Recepción:</strong> <span th:text="${#dates.format(pedido.fechaRecepcion, 'dd-MM-yyyy')}"></span></p>
+            <p><strong>Fecha de Recepción:</strong> <span th:text="${pedido.fechaRecepcion}"></span></p>
             <p><strong>Monto:</strong> <span th:text="${pedido.monto}"></span></p>
+            <div>
+                <a
+                    type="submit"
+                    class="btn btn-success"
+                    th:value="@{pedido.id}"
+                    th:href ="@{/modificarPedido/__${pedido.id}__}"
+                    >Modificar</a>
+            </div>
         </li>
     </ul>
     

@@ -22,8 +22,8 @@ public class Pedido {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaRecepcion;
+    
+    private String fechaRecepcion;
     private double monto;
     @ManyToOne
     private Proveedor proveedor;
@@ -31,7 +31,7 @@ public class Pedido {
     public Pedido() {
     }
 
-    public Pedido(Long id, Date fechaRecepcion, double monto, Proveedor proveedor) {
+    public Pedido(Long id, String fechaRecepcion, double monto, Proveedor proveedor) {
         this.id = id;
         this.fechaRecepcion = fechaRecepcion;
         this.monto = monto;
@@ -42,7 +42,7 @@ public class Pedido {
         return id;
     }
 
-    public Date getFechaRecepcion() {
+    public String getFechaRecepcion() {
         return fechaRecepcion;
     }
 
@@ -58,7 +58,7 @@ public class Pedido {
         this.id = id;
     }
 
-    public void setFechaRecepcion(Date fechaRecepcion) {
+    public void setFechaRecepcion(String fechaRecepcion) {
         this.fechaRecepcion = fechaRecepcion;
     }
 

@@ -61,11 +61,11 @@
             </form>
         </div>
 
-        <div>ingresar nuevo Pago</div>
+        <div>Ingresar nuevo Pedido</div>
          <div>
-            <form th:action="@{/registraPago}" method="POST">
+            <form th:action="@{/registraPedido}" method="POST">
                 
-               <input  class="form-control form-group" type="number" th:value="${monto}" name="monto" placeholder="Monto"> 
+                
                 <select required class="form-select form-group" name="proveId">
                             <option >Selecione Proveedor: </option>
                             <option
@@ -73,17 +73,17 @@
                                 th:value="${Proveedor.id}"
                                 th:text="${Proveedor.nombre}"/>
                         </select>
-               
+                        <input  class="form-control form-group" type="number" th:value="${monto}" name="monto" placeholder="Monto">
                            
                <button type="submit" class="btn btn-primary" >Enviar</button> 
             </form>
         </div>
 
-        <div>ingresar nuevo Pedido</div>
+        <div>Ingresar nuevo Pago</div>
          <div>
-            <form th:action="@{/registraPedido}" method="POST">
+            <form th:action="@{/registraPago}" method="POST">
                 
-               <input  class="form-control form-group" type="number" th:value="${monto}" name="monto" placeholder="Monto"> 
+                
                 <select required class="form-select form-group" name="proveId">
                             <option >Selecione Proveedor: </option>
                             <option
@@ -91,11 +91,13 @@
                                 th:value="${Proveedor.id}"
                                 th:text="${Proveedor.nombre}"/>
                         </select>
-               
+               <input  class="form-control form-group" type="number" th:value="${monto}" name="monto" placeholder="Monto">
                            
                <button type="submit" class="btn btn-primary" >Enviar</button> 
             </form>
         </div>
+
+        
 
 
 </body>

@@ -6,6 +6,7 @@
 package com.vinosCosas.sistemaProveedores.controladores;
 
 import com.vinosCosas.sistemaProveedores.entidades.Pago;
+import com.vinosCosas.sistemaProveedores.entidades.Pedido;
 import com.vinosCosas.sistemaProveedores.entidades.Proveedor;
 import com.vinosCosas.sistemaProveedores.servicios.PagoServicio;
 import com.vinosCosas.sistemaProveedores.servicios.PedidoServicio;
@@ -89,9 +90,29 @@ public class PortalControlador {
     
     @PostMapping("/actualizarPago/{id}")
     public String actualizaPago(Long pagoId, Long proveId, Double monto, String fechaPagoS) throws ParseException{
-        System.out.println("----------------------"+fechaPagoS);
+        
         
        pagoServicio.modificarPago(pagoId, monto, proveId, fechaPagoS);
+       
+       return"redirect:/";
+    }
+    
+    @GetMapping("/modificarPedido/{id}")
+    public String modificarPedido(@PathVariable Long id, ModelMap model){
+        Pedido pedido = pedidoServicio.getOne(id);
+        List<Proveedor> listaProve = proveServicio.mostraProve();
+        
+        model.addAttribute("listaProve", listaProve);
+        model.addAttribute("pedido", pedido);
+        
+        return "modificarPedido.html";
+    }
+    
+    @PostMapping("/actualizarPedido/{id}")
+    public String actualizaPedido(Long pedidoId, Long proveId, Double monto, String fechaPedidoS) throws ParseException{
+        
+        
+       pedidoServicio.modificarPedido(pedidoId, monto, proveId, fechaPedidoS);
        
        return"redirect:/";
     }
