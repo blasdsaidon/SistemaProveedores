@@ -84,6 +84,17 @@ public class PedidoServicio {
         pedidoRepo.save(pedido);
         
     }
+    @Transactional
+    public void eliminarPedido(Long pedidoId){
+        Optional<Pedido> respuestaPedido = pedidoRepo.findById(pedidoId);
+        Pedido pedido = respuestaPedido.get();
+        Double montoAnterior = pedido.getMonto();
+        Proveedor proveedor = pedido.getProveedor();
+        
+        proveedor.setSaldo(proveedor.getSaldo()-montoAnterior);
+        
+        pedidoRepo.delete(pedido);
+    }
         
 }
     

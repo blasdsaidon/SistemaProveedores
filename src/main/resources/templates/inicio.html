@@ -26,6 +26,7 @@
                     <th>Nombre del Proveedor</th>
                     <th>Saldo</th>
                     <th>Detalle</th>
+                    <th>Eliminar</th>
                 </tr>
             </thead>
             <tbody>
@@ -38,13 +39,23 @@
                         <div>
                             <a
                                 type="submit"
-                                class="btn btn-success"
+                                class="btn btn-primary"
                                 th:value="@{Proveedor.id}"
                                 th:href ="@{/proveedor/__${Proveedor.id}__}"
                                 >Ver</a>
                         </div>
                     </td>
-                </tr>
+                    <td>
+                        <div>
+                            <a
+                                type="submit"
+                                class="btn btn-danger"
+                                th:value="@{Proveedor.id}"
+                                th:href ="@{/eliminaProveedor/__${Proveedor.id}__}"
+                                onclick="return confirm('¿Estás seguro de que deseas eliminar este proveedor?');"
+                                >Eliminar Proveedor</a>
+                        </div>
+                    </td>
             </tbody>
         </table>
         </div>

@@ -12,10 +12,10 @@ import com.vinosCosas.sistemaProveedores.servicios.PagoServicio;
 import com.vinosCosas.sistemaProveedores.servicios.PedidoServicio;
 import com.vinosCosas.sistemaProveedores.servicios.ProveedorServicio;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -77,6 +77,22 @@ public class PortalControlador {
             return "vistaProve.html";
         }
     
+    @GetMapping("/eliminaProveedor/{id}")
+    public String eliminaProveedor(@PathVariable Long id) {
+        
+        proveServicio.eliminarProve(id);
+        
+            return "redirect:/";
+        }
+    
+    @GetMapping("/eliminaPago/{id}")
+    public String eliminaPago(@PathVariable Long id) {
+        
+        pagoServicio.eliminarPago(id);
+        
+            return "redirect:/";
+        }
+    
     @GetMapping("/modificarPago/{id}")
     public String modificarPago(@PathVariable Long id, ModelMap model){
         Pago pago = pagoServicio.getOne(id);
@@ -116,6 +132,20 @@ public class PortalControlador {
        
        return"redirect:/";
     }
+    
+    @GetMapping("/eliminaPedido/{id}")
+    public String eliminaPedido(@PathVariable Long id) {
+        
+       pedidoServicio.eliminarPedido(id);
+        
+            return "redirect:/";
+        }
+    
+    @GetMapping("/test429")
+    public ResponseEntity<String> test429(){
+        return ResponseEntity.status(HttpStatus.TOO_MANY_REQUESTS).body("Too many request");
+    }
+    
 }  
     
 

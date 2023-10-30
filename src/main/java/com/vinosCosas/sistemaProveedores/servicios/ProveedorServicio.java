@@ -45,4 +45,10 @@ public class ProveedorServicio {
         
         return proveedor;
     }
+    @Transactional
+    public void eliminarProve(Long id){
+        Proveedor prove = proveRepo.getOne(id);
+        
+        proveRepo.delete(prove);
+    }
 }

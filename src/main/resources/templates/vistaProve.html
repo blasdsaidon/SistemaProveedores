@@ -29,6 +29,16 @@
                     th:href ="@{/modificarPedido/__${pedido.id}__}"
                     >Modificar</a>
             </div>
+            <div>
+                <br>
+                <a
+                    type="submit"
+                    class="btn btn-danger"
+                    th:value="@{pago.id}"
+                    th:href ="@{/eliminaPedido/__${pedido.id}__}"
+                    onclick="return confirm('¿Estás seguro de que deseas eliminar este pedido?');"
+                    >Eliminar</a>
+            </div>
         </li>
     </ul>
     
@@ -45,6 +55,16 @@
                     th:value="@{pago.id}"
                     th:href ="@{/modificarPago/__${pago.id}__}"
                     >Modificar</a>
+            </div>
+            <div>
+                <br>
+                <a
+                    type="submit"
+                    class="btn btn-danger"
+                    th:value="@{pago.id}"
+                    th:href ="@{/eliminaPago/__${pago.id}__}"
+                    onclick="return confirm('¿Estás seguro de que deseas eliminar este pago?');"
+                    >Eliminar</a>
             </div>
         </li>
     </ul>

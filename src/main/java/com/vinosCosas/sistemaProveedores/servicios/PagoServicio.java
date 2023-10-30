@@ -81,4 +81,16 @@ public class PagoServicio {
         pagoRepo.save(pago);
         
     }
+    
+    @Transactional
+    public void eliminarPago(Long pagoId){
+        Optional<Pago> respuestaPago = pagoRepo.findById(pagoId);
+        Pago pago = respuestaPago.get();
+        Double montoAnterior = pago.getMontoPago();
+        Proveedor proveedor = pago.getProveedor();
+        
+        proveedor.setSaldo(proveedor.getSaldo()+montoAnterior);
+        
+        pagoRepo.delete(pago);
+    }
 }
